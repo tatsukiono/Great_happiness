@@ -1,0 +1,16 @@
+.header
+  .header-content
+    %h1.header-content__left 
+      = link_to 'Great happiness', root_path
+    %ul.header-content__right
+      %li.header-content__right__list お題
+      %li.header-content__right__list 画像
+.group-content
+  .title お題
+  .contents
+    - @themes.each do |theme|
+      .content
+        .content__theme 
+          = link_to theme_path(theme) do
+            = theme.title
+        .content__comment-i 1

@@ -1,0 +1,14 @@
+.header
+  .header-content
+    %h1.header-content__left
+      = link_to 'Great happiness', root_path
+    %ul.header-content__right
+      %li.header-content__right__list お題
+      %li.header-content__right__list 画像
+.group-content
+  .new-content
+    .title お題の作成
+    .new-content__theme
+      = form_with model: @theme do |f|
+        = f.text_area :title, placeholder: "お題", cols: "50", rows: "10", class: 'new-content__theme__text'
+        = f.submit value: '投稿', class: 'new-content__theme__submit'

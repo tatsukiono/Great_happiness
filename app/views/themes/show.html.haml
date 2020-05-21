@@ -1,0 +1,24 @@
+.header
+  .header-content
+    %h1.header-content__left 
+      = link_to 'Great happiness', root_path
+    %ul.header-content__right
+      %li.header-content__right__list お題
+      %li.header-content__right__list 画像
+.group-content
+  .show-content
+    .show-content__theme
+      = @theme.title
+    .show-content__comments
+      .comment
+        .comment__left
+          わーーー
+        .comment__right
+          .comment__right__good
+            いいね
+          .comment__right__name
+            いつき
+    .show-content__form
+      %form
+        %input.show-content__form__text{type: 'textarea'}
+        %input.show-content__form__submit{type: 'submit', value: '投稿'}
