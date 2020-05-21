@@ -10,15 +10,16 @@
     .show-content__theme
       = @theme.title
     .show-content__comments
-      .comment
-        .comment__left
-          わーーー
-        .comment__right
-          .comment__right__good
-            いいね
-          .comment__right__name
-            いつき
-    .show-content__form
-      %form
-        %input.show-content__form__text{type: 'textarea'}
-        %input.show-content__form__submit{type: 'submit', value: '投稿'}
+      - @comments.each do |comment|
+        .comment
+          .comment__left
+            = comment.text
+          .comment__right
+            .comment__right__good
+              いいね
+            .comment__right__name
+              = current_user.name
+    = form_with model: [@theme, @comment] do |f|
+      .show-content__form
+        = f.text_area :text, placeholder: 'コメント', rows: "2", size: "40", class: 'show-content__form__text'
+        = f.submit value: '投稿', class: 'show-content__form__submit'
