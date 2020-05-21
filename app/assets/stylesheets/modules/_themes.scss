@@ -96,6 +96,7 @@
         height: 50px;
         background-color: #FFFFEE;
         margin: 0 auto;
+        margin-bottom: 10px;
         display: flex;
         justify-content: space-between;
         &__left{
@@ -111,9 +112,11 @@
     }
     &__form{
       height: 40px;
+      width: 80%;
+      margin: 0 auto;
       margin-top: 25px;
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       &__submit{
         width: 100px;
         display: inline-block;
