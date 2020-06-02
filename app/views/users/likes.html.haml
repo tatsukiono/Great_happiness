@@ -1,0 +1,31 @@
+.header
+  .header-content
+    %h1.header-content__left 
+      = link_to 'Great happiness', root_path, class: 'header-content__left__title'
+    %ul.header-content__right
+      %li.header-content__right__list お題
+      %li.header-content__right__list 
+        = link_to 'ログアウト', destroy_user_session_path, method: :delete
+      %li.header-content__right__list 
+        = link_to current_user.name, users_path(current_user)
+      %li.header-content__right__list 画像
+.group-content
+  .title いいね一覧
+  .my-user-likes-contents
+    - current_user.likes.each do |like|
+      .my-user-likes-content
+        = link_to theme_path(like.theme), class: 'my-user-likes-content__title' do
+          = like.theme.title
+          = image_tag like.theme.image.url, class: 'my-user-likes-content__title__image' if like.theme.image.present?
+        .my-user-likes-content__comment
+          = markdown(like.comment.text).html_safe
+  
+
+
+
+
+
+
+      -# - current_user.likes.each do |like|
+      -#   = like.theme.title
+      -#   = markdown(like.comment.text).html_safe

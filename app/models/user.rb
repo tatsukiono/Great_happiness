@@ -6,6 +6,8 @@ class User < ApplicationRecord
   has_many :themes
   has_many :groups
   has_many :comments
+  has_many :likes
+
 
   validates :name, presence: true, uniqueness: true
 end

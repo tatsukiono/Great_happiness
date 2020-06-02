@@ -1,5 +1,8 @@
 class Theme < ApplicationRecord
   belongs_to :user
   has_many :comments
-  validates :title, presence: true, uniqueness: true
+  has_many :likes
+  validates :title, presence: true, unless: :image?
+
+  mount_uploader :image, ImageUploader
 end

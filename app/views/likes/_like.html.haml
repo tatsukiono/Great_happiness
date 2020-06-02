@@ -1,0 +1,8 @@
+-if Like.find_by(user_id: current_user.id, theme_id: @theme.id, comment_id: comment.id)
+  = link_to theme_comment_like_path(@theme, comment, current_user), method: :delete, remote: true, id: :"like-button-#{comment.id}", class: 'destroy-icon' do
+    = icon('fas', 'heart')
+    = comment.likes.count
+-else
+  = link_to theme_comment_likes_path(@theme, comment), method: :post, remote: true, id: :"like-button-#{comment.id}", class: 'create-icon'  do
+    = icon('fas', 'heart')
+    = comment.likes.count

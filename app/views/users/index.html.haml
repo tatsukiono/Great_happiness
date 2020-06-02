@@ -1,0 +1,52 @@
+.header
+  .header-content
+    %h1.header-content__left 
+      = link_to 'Great happiness', root_path, class: 'header-content__left__title'
+    %ul.header-content__right
+      %li.header-content__right__list お題
+      %li.header-content__right__list 
+        = link_to 'ログアウト', destroy_user_session_path, method: :delete
+      %li.header-content__right__list 
+        = link_to current_user.name, users_path(current_user)
+      %li.header-content__right__list 画像
+.group-content
+  .title マイページ
+  .my-user-content
+    .my-user-content__current_rank
+      - likes_count_total = 0
+      - @my_ranks.each.with_index(1) do |comment, i|
+        - likes_count_total = likes_count_total + comment.likes.count
+      - if likes_count_total >= 25
+        - rank = "A"
+        - current_rank = "現在は#{rank}ランクです"
+        - after_rank = "最高ランクです"
+      - elsif likes_count_total >= 20
+        - rank = "B"
+        - current_rank = "現在は#{rank}ランクです"
+        - after_rank = "次のランクまで#{25 - likes_count_total}いいね"
+      - elsif likes_count_total >= 15
+        - rank = "C"
+        - current_rank = "現在は#{rank}ランクです"
+        - after_rank = "次のランクまで#{20 - likes_count_total}いいね"
+      - elsif likes_count_total >= 10
+        - rank = "D"
+        - current_rank = "現在は#{rank}ランクです"
+        - after_rank = "次のランクまで#{15 - likes_count_total}いいね"
+      - elsif likes_count_total >= 0
+        - rank = "E"
+        - current_rank = "現在は#{rank}ランクです"
+        - after_rank = "次のランクまで#{10 - likes_count_total}いいね"
+      = current_rank
+    .my-user-content__after_rank
+      = after_rank
+    .my-user-content__comprehensive
+      .my-user-content__score__total
+        総合いいね数：
+        = likes_count_total
+      .my-user-content__score__average
+        平均いいね：
+        - likes_count_average = 0
+        - likes_count_average = likes_count_total / @my_ranks.count.to_f
+        = likes_count_average.round(1)
+  = link_to 'お題作成', new_theme_path
+  = link_to 'いいね一覧', likes_users_path

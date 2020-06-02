@@ -1,0 +1,20 @@
+.header
+  .header-content
+    %h1.header-content__left
+      = link_to 'Great happiness', root_path, class: 'header-content__left__title'
+    %ul.header-content__right
+      %li.header-content__right__list お題
+      %li.header-content__right__list 画像
+.group-content
+  .new-comment-content
+    .show-content__theme
+      = @theme.title
+
+    = form_for [@theme, @comment], id: "new_comment" do |f|
+      .new-content__form
+        = f.text_area :text, placeholder: 'コメント', cols: "30", rows: "5", class: 'new-content__theme__text', id: 'editor'
+        %link{:href => "https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css", :rel => "stylesheet"}/
+        %script{:src => "https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"}
+        :javascript
+          var simplemde = new SimpleMDE({ element: document.getElementById("editor") });
+        = f.submit value: '投稿', class: 'new-content__form__submit'

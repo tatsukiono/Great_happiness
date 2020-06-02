@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_21_021251) do
+ActiveRecord::Schema.define(version: 2020_05_22_012453) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "theme_id"
-    t.text "text"
+    t.text "text", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["theme_id"], name: "index_comments_on_theme_id"
@@ -30,8 +30,20 @@ ActiveRecord::Schema.define(version: 2020_05_21_021251) do
     t.index ["user_id"], name: "index_groups_on_user_id"
   end
 
+  create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "comment_id"
+    t.bigint "theme_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["comment_id"], name: "index_likes_on_comment_id"
+    t.index ["theme_id"], name: "index_likes_on_theme_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
   create_table "themes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "title", null: false
+    t.string "title"
+    t.string "image"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -55,5 +67,8 @@ ActiveRecord::Schema.define(version: 2020_05_21_021251) do
   add_foreign_key "comments", "themes"
   add_foreign_key "comments", "users"
   add_foreign_key "groups", "users"
+  add_foreign_key "likes", "comments"
+  add_foreign_key "likes", "themes"
+  add_foreign_key "likes", "users"
   add_foreign_key "themes", "users"
 end
