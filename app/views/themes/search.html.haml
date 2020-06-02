@@ -11,11 +11,11 @@
       %li.header-content__right__list 画像
 .group-content
   .title お題
-  = link_to '文字', root_path, class: 'turn new-arrival', value: 'arrival'
-  = link_to '写真', search_themes_path, class: 'turn comment-order'
+  = link_to '文字', root_path, class: 'new-arrival'
+  = link_to '写真', search_themes_path, class: 'comment-order'
   .contents
     - @themes.each do |theme|
-      - if theme.title.present?
+      - if theme.image.present?
         .content
           .content__theme 
             = link_to theme_path(theme), class: 'content__theme__title' do
@@ -28,7 +28,3 @@
               = theme.comments.count
   
   = paginate(@themes)
-
-
-
-  

@@ -1,0 +1,35 @@
+
+
+
+.pagination>li>a {          
+  border: none;     /*枠線をなくす*/
+  color: #696969;   /*文字の色を変える*/
+  text-decoration: none;
+}
+
+/* 表示しているページ番号のデザイン */
+.pagination>.active>a {     
+  background: #93c9ff;     /*背景の色を変える*/
+  // border-radius: 100%;     /*角を丸くする*/
+  padding: 5px;
+}
+
+/*ホバー時のデザイン*/
+.pagination>li>a:hover {        
+  // border-radius: 10px;    /*角を丸くする*/
+}
+
+.pagination{
+  display: flex;
+  margin-left: 40px;
+  margin-bottom: 50px;
+  // background-color: crimson;
+  width: 70%;
+}
+
+.pagination>li{
+  padding-left: 10px;
+  font-size: 20px;
+  background-color: #FFFFEE;
+  color: #2a2a2a;
+}

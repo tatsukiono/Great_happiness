@@ -1,7 +1,7 @@
 .header
   .header-content
     %h1.header-content__left 
-      = link_to 'Great happiness', root_path
+      = link_to 'Great happiness', root_path, class: 'header-content__left__title'
     %ul.header-content__right
       %li.header-content__right__list お題
       %li.header-content__right__list 画像
@@ -9,17 +9,41 @@
   .show-content
     .show-content__theme
       = @theme.title
+      = image_tag @theme.image.url, class: 'show-content__theme__image' if @theme.image.present?
+    .show-content__ranks
+      - @theme_ranks.each.with_index(1) do |comment, i|
+        - if i < 4
+          %div(class="rank rank__#{i}")
+            = i
+            位
+          %div(class="comment comment__#{i}")
+            .comment__left
+              = markdown(comment.text).html_safe
+            .comment__right
+              %div{ id: "like-btn-#{comment.id}" }
+                = render partial: "likes/like", locals: { comment: comment}
+              .comment__right__name
+                = comment.user.name
+      - unless @theme_ranks.present?
+        .show-content__ranks__none
+          ※いいね数のランキングが表示されます
+          %br
+          ランキング入りを目指して頑張ろう！！
     .show-content__comments
       - @comments.each do |comment|
         .comment
           .comment__left
-            = comment.text
+            = markdown(comment.text).html_safe
           .comment__right
-            .comment__right__good
-              いいね
+            %div{ id: "like-btn-#{comment.id}" }
+              = render partial: "likes/like", locals: { comment: comment}
             .comment__right__name
-              = current_user.name
-    = form_with model: [@theme, @comment] do |f|
-      .show-content__form
-        = f.text_area :text, placeholder: 'コメント', rows: "2", size: "40", class: 'show-content__form__text'
-        = f.submit value: '投稿', class: 'show-content__form__submit'
+              = comment.user.name
+      - unless @comments.present?
+        .show-content__comments__none 
+          ※まだコメントがありません
+          %br 
+          コメントを入力してみよう！！
+    .show-content__form          
+      = link_to '投稿する', new_theme_comment_path(@theme), class: 'show-content__form__btn'
+      
