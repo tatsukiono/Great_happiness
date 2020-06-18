@@ -167,7 +167,7 @@
         &__left{
           padding: 5px;
           font-size: 16px;
-          width: 78%;
+          width: 70%;
         }
         &__right{
           display: flex;
@@ -181,6 +181,33 @@
           .create-icon{
             color: gray;
             text-decoration: none;
+          }
+          &__1{
+            color: #FFD700;
+            padding-right: 10px;
+            font-size: 20px;
+            font-weight: bold;
+          }
+          &__2{
+            color: #C0C0C0;
+            padding-right: 10px;
+            font-size: 20px;
+            font-weight: bold;
+          }
+          &__3{
+            color: #C47022;
+            padding-right: 10px;
+            font-size: 20px;
+            font-weight: bold;
+          }
+          &__name1{
+            font-size: 18px;
+          }
+          &__name2{
+            font-size: 18px;
+          }
+          &__name3{
+            font-size: 18px;
           }
         }
       }
@@ -210,7 +237,7 @@
         &__left{
           padding: 5px;
           font-size: 16px;
-          width: 78%;
+          width: 70%;
           // font-weight: bold;
         }
         &__right{

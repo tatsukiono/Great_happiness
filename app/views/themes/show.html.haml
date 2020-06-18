@@ -20,9 +20,11 @@
             .comment__left
               = markdown(comment.text).html_safe
             .comment__right
-              %div{ id: "like-btn-#{comment.id}" }
-                = render partial: "likes/like", locals: { comment: comment}
-              .comment__right__name
+              -# %div{ id: "like-btn-#{comment.id}" }
+              -#   = render partial: "likes/like", locals: { comment: comment}
+              %div(class="comment__right__#{i}")
+                = comment.likes.count
+              %div(class="comment__right__name#{i}")
                 = comment.user.name
       - unless @theme_ranks.present?
         .show-content__ranks__none
