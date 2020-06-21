@@ -1,14 +1,3 @@
-.header
-  .header-content
-    %h1.header-content__left 
-      = link_to 'Great happiness', root_path, class: 'header-content__left__title'
-    %ul.header-content__right
-      %li.header-content__right__list お題
-      %li.header-content__right__list 
-        = link_to 'ログアウト', destroy_user_session_path, method: :delete
-      %li.header-content__right__list 
-        = link_to current_user.name, users_path(current_user)
-      %li.header-content__right__list 画像
 .group-content
   .title マイページ
   .my-user-content
