@@ -33,11 +33,6 @@ class ThemesController < ApplicationController
 
     
     @themes = Theme.all.page(params[:page]).order("created_at ASC").per(10)
-
-    # respond_to do |format|
-    #   format.html { redirect_to :root }
-    #   format.json
-    # end
   end
 
 
