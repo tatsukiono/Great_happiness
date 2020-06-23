@@ -40,6 +40,7 @@
         - likes_count_average = 0
         - likes_count_average = likes_count_total / @my_ranks.count.to_f
         = likes_count_average.round(1)
+  .note ※自分のコメントがいいねされるとランクが上がるよ！
   .my-user-btn
     = link_to 'お題作成', new_theme_path, class: 'my-user-btn__btn'
     = link_to 'いいね一覧', likes_users_path, class: 'my-user-btn__btn'

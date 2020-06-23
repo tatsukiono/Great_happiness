@@ -4,10 +4,11 @@
 .group-content
   .title いいね一覧
   .my-user-likes-contents
-    - current_user.likes.each do |like|
+    - @users.each do |like|
       .my-user-likes-content
         = link_to theme_path(like.theme), class: 'my-user-likes-content__title' do
           = like.theme.title
           = image_tag like.theme.image.url, class: 'my-user-likes-content__title__image' if like.theme.image.present?
         .my-user-likes-content__comment
           = markdown(like.comment.text).html_safe
+  = paginate(@users)
