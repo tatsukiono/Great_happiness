@@ -1,3 +1,6 @@
+- breadcrumb :themes
+-# 下記を記述した箇所にパンくずリストが表示される。
+= breadcrumbs separator: " &rsaquo; ", class: 'breadcrumbs'
 .group-content
   .show-content
     .show-content__theme
@@ -39,6 +42,12 @@
           ※まだコメントがありません
           %br 
           コメントを入力してみよう！！
-    .show-content__form          
-      = link_to '投稿する', new_theme_comment_path(@theme), class: 'show-content__form__btn'
       
+    = form_for [@theme, @comment], id: "new_comment" do |f|
+      .new-content__form
+        = f.text_area :text, placeholder: 'コメント', class: 'new-content__theme__text', id: 'editor'
+        %link{:href => "https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css", :rel => "stylesheet"}/
+        %script{:src => "https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"}
+        :javascript
+          var simplemde = new SimpleMDE({ element: document.getElementById("editor") });
+        = f.submit value: '投稿', class: 'new-content__form__submit'

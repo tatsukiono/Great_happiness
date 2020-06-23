@@ -1,3 +1,6 @@
+- breadcrumb :users_likes
+-# 下記を記述した箇所にパンくずリストが表示される。
+= breadcrumbs separator: " &rsaquo; "
 .group-content
   .title いいね一覧
   .my-user-likes-contents
@@ -8,13 +11,3 @@
           = image_tag like.theme.image.url, class: 'my-user-likes-content__title__image' if like.theme.image.present?
         .my-user-likes-content__comment
           = markdown(like.comment.text).html_safe
-  
-
-
-
-
-
-
-      -# - current_user.likes.each do |like|
-      -#   = like.theme.title
-      -#   = markdown(like.comment.text).html_safe

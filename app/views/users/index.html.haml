@@ -1,3 +1,6 @@
+- breadcrumb :users
+-# 下記を記述した箇所にパンくずリストが表示される。
+= breadcrumbs separator: " &rsaquo; "
 .group-content
   .title マイページ
   .my-user-content
@@ -37,5 +40,6 @@
         - likes_count_average = 0
         - likes_count_average = likes_count_total / @my_ranks.count.to_f
         = likes_count_average.round(1)
-  = link_to 'お題作成', new_theme_path
-  = link_to 'いいね一覧', likes_users_path
+  .my-user-btn
+    = link_to 'お題作成', new_theme_path, class: 'my-user-btn__btn'
+    = link_to 'いいね一覧', likes_users_path, class: 'my-user-btn__btn'

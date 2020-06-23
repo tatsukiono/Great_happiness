@@ -6,16 +6,15 @@
   .contents
     - @themes.each do |theme|
       - if theme.title.present?
-        .content
-          .content__theme 
-            = link_to theme_path(theme), class: 'content__theme__title' do
+        = link_to theme_path(theme), class: 'content__theme__title' do
+          .content
+            .content__theme 
               = theme.title
-              = image_tag theme.image.url, class: 'content__theme__title__image' if theme.image.present?
-          .content__comment
-            .content__comment__title
-              コメント数:
-            .content__comment__number
-              = theme.comments.count
+            .content__comment
+              .content__comment__title
+                コメント数:
+              .content__comment__number
+                = theme.comments.count
   
   = paginate(@themes)
 
