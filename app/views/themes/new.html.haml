@@ -7,5 +7,5 @@
     .new-content__theme
       = form_for  @theme do |f|
         = f.text_area :title, placeholder: "お題", cols: "50", rows: "10", class: 'new-content__theme__text'
-        = f.file_field :image
+        = f.file_field :image, class: 'new-content__theme__image'
         = f.submit value: '投稿', class: 'new-content__theme__submit'
