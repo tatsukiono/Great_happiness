@@ -50,5 +50,6 @@ test:
 production:
   <<: *default
   database: Great_happiness_production
-  username: Great_happiness
+  username: root
   password: <%= ENV['GREAT_HAPPINESS_DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
