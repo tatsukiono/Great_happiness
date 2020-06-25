@@ -51,5 +51,5 @@ production:
   <<: *default
   database: Great_happiness_production
   username: root
-  password: <%= ENV['GREAT_HAPPINESS_DATABASE_PASSWORD'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
   socket: /var/lib/mysql/mysql.sock
