@@ -17,15 +17,11 @@
       margin-top: 20px;
     }
   }
-  .note{
-    width: 80%;
-    margin: 0 auto;
-    color: rgb(136, 136, 136);;
-  }
   .my-user-btn{
     width: 80%;
     margin: 0 auto;
     margin-top: 40px;
+    // background-color: blueviolet;
     display: flex;
     justify-content: space-evenly;
     &__btn{
@@ -34,7 +30,7 @@
       text-decoration: none;
       background: #FFFFEE;/*ボタン色*/
       color: black;
-      border-bottom: solid 4px #ccc;
+      border-bottom: solid 4px grey;
       border-radius: 3px;
     }
     .my-user-btn__btn:active {
@@ -65,7 +61,6 @@
         display: block;
         text-decoration: none;
         color: black;
-        border-bottom: 1px solid #ccc;
         &__image{
           width: 200px;
           height: 180px;
@@ -76,7 +71,7 @@
       }
       &__comment{
         height: 70px;
-        background-color: #FFFFEE;
+        background-color: yellowgreen;
         padding-left: 10px;
       }
     }

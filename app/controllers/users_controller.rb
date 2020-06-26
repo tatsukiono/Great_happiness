@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   def likes
-    @users = current_user.likes.page(params[:page]).order("created_at ASC").per(10)
+    @themes = Theme.all.page(params[:page]).order("created_at ASC").per(10)
   end
 
 end
