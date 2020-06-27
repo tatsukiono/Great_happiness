@@ -3,10 +3,6 @@ class ThemesController < ApplicationController
   def index
     @themes = Theme.all.page(params[:page]).order("created_at ASC").per(10)
     @themes_rank = Theme.find(Comment.group(:theme_id).order('count(theme_id) desc').pluck(:theme_id))
-    # respond_to do |format|
-    #   format.html
-    #   format.json { render json: @themes_rank}
-    # end
   end
 
   def new
@@ -24,16 +20,14 @@ class ThemesController < ApplicationController
     @comment = Comment.new
     @all_ranks = Comment.find(Like.group(:comment_id).order('count(comment_id) desc').pluck(:comment_id))
     @theme_ranks = @all_ranks.select{ |comment| comment.theme_id == @theme.id }
-    @my_ranks = @all_ranks.select{ |comment| comment.user_id == current_user.id }
   end
 
 
-  def search
-    @themes_rank = Theme.find(Comment.group(:theme_id).order('count(theme_id) desc').pluck(:theme_id))
-
-    
-    @themes = Theme.all.page(params[:page]).order("created_at ASC").per(10)
-  end
+  # def search
+  #   @themes_rank = Theme.find(Comment.group(:theme_id).order('count(theme_id) desc').pluck(:theme_id))
+  #   @themes = Theme.all.page(params[:page]).order("created_at ASC").per(10)
+  #   @all_ranks = Comment.find(Like.group(:comment_id).order('count(comment_id) desc').pluck(:comment_id))
+  # end
 
 
 
