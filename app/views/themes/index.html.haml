@@ -6,6 +6,7 @@
         .content
           .content__theme 
             = theme.title
+            = image_tag theme.image.url, class: 'content__theme__title__image' if theme.image.present?
           .content__comment
             .content__comment__title
               コメント数:
