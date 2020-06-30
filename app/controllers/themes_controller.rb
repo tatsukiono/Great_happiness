@@ -1,7 +1,7 @@
 class ThemesController < ApplicationController
 
   def index
-    @themes = Theme.all.page(params[:page]).order("created_at ASC").per(10)
+    @themes = Theme.all.page(params[:page]).order("created_at DESC").per(10)
     @themes_rank = Theme.find(Comment.group(:theme_id).order('count(theme_id) desc').pluck(:theme_id))
   end
 
@@ -23,11 +23,11 @@ class ThemesController < ApplicationController
   end
 
 
-  # def search
-  #   @themes_rank = Theme.find(Comment.group(:theme_id).order('count(theme_id) desc').pluck(:theme_id))
-  #   @themes = Theme.all.page(params[:page]).order("created_at ASC").per(10)
-  #   @all_ranks = Comment.find(Like.group(:comment_id).order('count(comment_id) desc').pluck(:comment_id))
-  # end
+  def search
+    @themes_rank = Theme.find(Comment.group(:theme_id).order('count(theme_id) desc').pluck(:theme_id))
+    @themes = Theme.all.page(params[:page]).order("created_at desc").per(10)
+    @all_ranks = Comment.find(Like.group(:comment_id).order('count(comment_id) desc').pluck(:comment_id))
+  end
 
 
 

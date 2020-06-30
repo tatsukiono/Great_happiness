@@ -1,5 +1,8 @@
 .group-content
   .title お題
+  .sorting
+    = link_to '新着順', root_path, class: 'turn sorting__theme', value: 'arrival'
+    = link_to 'コメント数順', search_themes_path, class: 'turn sorting__image'
   .contents
     - @themes.each do |theme|
       = link_to theme_path(theme), class: 'content__theme__title' do
@@ -12,7 +15,6 @@
               コメント数:
             .content__comment__number
               = theme.comments.count
-  
   = paginate(@themes)
 
 

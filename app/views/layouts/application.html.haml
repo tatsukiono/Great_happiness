@@ -17,6 +17,6 @@
             %li
               = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'header-content__right__list'
             %li 
-              = link_to 'マイページ', users_path(current_user), class: 'header-content__right__list'
+              = link_to current_user.name, users_path(current_user), class: 'header-content__right__list'
        
     = yield

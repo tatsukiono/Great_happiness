@@ -42,6 +42,19 @@
     text-align: center;
     padding-top: 20px;
   }
+  .sorting{
+    font-size: 20px;
+    margin: 20px 0;
+    margin-left: 40px;
+    &__theme{
+      text-decoration: none;
+      color: black;
+    }
+    &__image{
+      text-decoration: none;
+      color: black;
+    }
+  }
   .contents{
     display: flex;
     justify-content: space-between;
