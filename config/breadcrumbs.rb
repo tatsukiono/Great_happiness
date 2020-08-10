@@ -11,6 +11,11 @@ crumb :users_likes do
   parent :users
 end
 
+crumb :users_groups do
+  link "グループ", group_messages_path
+  parent :users
+end
+
 crumb :users_new_theme do
   link "お題の作成", new_theme_path
   parent :users

@@ -45,6 +45,37 @@
       border-bottom: none;
     }
   }
+  .my-user-groups{
+    width: 40%;
+    height: 150px;
+    margin: 0 auto;
+    margin-top: 40px;
+    background-color: #FFFFEE;
+    overflow: scroll;
+    &__title{
+      text-align: center;
+    }
+    &__url{
+      text-decoration: none;
+    }
+    &__box{
+      display: flex;
+      justify-content: space-between;
+      padding: 0 100px;
+      text-decoration: none;
+      margin-bottom: 10px;
+      &__name{
+        color: black;
+        text-decoration: none;
+      }
+      &__number{
+        color: black;
+        text-decoration: none;
+      }
+    }
+  }
+
+
   .my-user-likes-contents{
     display: flex;
     justify-content: start;

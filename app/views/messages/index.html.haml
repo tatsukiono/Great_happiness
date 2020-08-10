@@ -1,0 +1,44 @@
+- breadcrumb :users_groups
+-# 下記を記述した箇所にパンくずリストが表示される。
+= breadcrumbs separator: " &rsaquo; ", class: 'breadcrumbs'
+.wrapper
+  .chat-side
+    .side-header
+      .side-header__header
+        お題
+      .top-items
+        - @users.each do |like|
+          .top-items__theme
+            = like.theme.title
+    .groups
+      .groups-header
+        グループ
+      - current_user.groups.each do |group|
+        = link_to group_messages_path(group), class: "group-list__btn" do
+          .group-list
+            .group-list__name
+              = group.name
+            .group-list__message
+              = group.show_last_message
+  .main-chat
+    .group-header
+      .group-header__info-left
+        %p.group-header__name
+          = @group.name
+        %ul.group-header__menbers
+          %p.group-header__menbers__title Menber :
+          - @group.users.each do |user|
+            %li.group-header__menbers__menber
+              = user.name
+      .group-header__info-right
+        = link_to edit_group_path(@group), class: "group-header__edit" do
+          %p.group-header__edit-btn Edit
+
+    .group-messages
+      = render @messages
+    .form
+      = form_for [@group, @message] do |f|
+        .new-message
+          .input-box
+            = f.text_field :content, class: 'input-box__text', placeholder: 'type a message'
+          = f.submit 'Send', class: 'input-btn'

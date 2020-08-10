@@ -43,4 +43,18 @@
   .note ※自分のコメントがいいねされるとランクが上がるよ！
   .my-user-btn
     = link_to 'お題作成', new_theme_path, class: 'my-user-btn__btn'
+    = link_to 'グループ作成', new_group_path, class: 'my-user-btn__btn'
     = link_to 'いいね一覧', likes_users_path, class: 'my-user-btn__btn'
+
+  .my-user-groups
+    .my-user-groups__title
+      グループ
+    - current_user.groups.each do |group|
+      = link_to group_messages_path(group), class: "my-user-groups__url" do
+        .my-user-groups__box
+          .my-user-groups__box__name
+            = group.name
+          .my-user-groups__box__number
+            - count = 0
+            - count = group.users.count
+            = "#{count}人"
